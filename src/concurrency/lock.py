@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 import logging
 
-from logging_helper import setup_logging
+from helpers.logging_helper import setup_logging
 
 
 class DB:
@@ -54,6 +54,7 @@ def main() -> None:
             executor.submit(db.no_lock_update, index)
 
     print("")
+
     time.sleep(0.5)
 
     db.reset()
@@ -62,6 +63,10 @@ def main() -> None:
     with ThreadPoolExecutor(max_workers=3) as executor:
         for index in range(1, 3):
             executor.submit(db.lock_update, index)
+
+    print('\nThreads must consider race conditions.\n'
+          'Notice state is not updated properly without lock.\n'
+          'Notice state is properly updated with lock.')
 
 
 if __name__ == "__main__":

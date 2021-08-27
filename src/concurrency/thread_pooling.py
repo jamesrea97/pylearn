@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 import logging
 
-from logging_helper import setup_logging
+from helpers.logging_helper import setup_logging
 
 
 def long_task(i: int) -> None:
@@ -18,6 +18,8 @@ def main() -> None:
 
     with ThreadPoolExecutor(max_workers=3) as executor:
         executor.map(long_task, range(3))
+
+    print('\nThreads can be run concurrently.')
 
 
 if __name__ == "__main__":

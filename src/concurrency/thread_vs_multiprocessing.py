@@ -24,7 +24,8 @@ def increase(concurrency_type: ConcurrencyType) -> None:
     if concurrency_type == ConcurrencyType.PROCESS:
         with process_lock:
             PROCESS_NOT_SHARED_MEMORY[0] += 1
-            logging.info(f"Current status of Process (not) shared memory: {PROCESS_NOT_SHARED_MEMORY}")
+            logging.info(
+                f"Current status of Process (not) shared memory: {PROCESS_NOT_SHARED_MEMORY}")
     elif concurrency_type == ConcurrencyType.THREAD:
         with thread_lock:
             THREAD_SHARED_MEMORY[0] += 1

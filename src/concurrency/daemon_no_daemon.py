@@ -3,6 +3,8 @@ import threading
 import time
 import logging
 
+from helpers.logging_helper import setup_logging
+
 
 def long_task():
     """Long task."""
@@ -15,11 +17,11 @@ def without_daemon():
     """Example with thread but without daemon."""
     logging.info("Starting program.")
 
-    thread = threading.Thread(target=long_task, daemon=True)
+    thread = threading.Thread(target=long_task, daemon=False)
 
     logging.info("Starting daemonized thread.")
     thread.start()
-    # this will finish whatever is running on thread before executing rest.
+    # this will finish whatever is running on thread before executing rest of main thread.
     # thread.join()
 
     logging.info("Stopping program.")
@@ -29,20 +31,14 @@ def with_daemon():
     """Example function with thread and daemon."""
     logging.info("Starting program.")
 
-    thread = threading.Thread(target=long_task, daemon=False)
+    thread = threading.Thread(target=long_task, daemon=True)
 
     logging.info("Starting non-daemonized thread.")
     thread.start()
-    # this will finish whatever is running on thread before executing rest.
+    # this will finish whatever is running on thread before executing rest of main thread.
     # thread.join()
 
     logging.info("Stopping program.")
-
-
-def setup_logging():
-    logging.basicConfig(format="%(asctime)s: %(message)s",
-                        level=logging.INFO,
-                        datefmt="%H:%M:%S")
 
 
 def main():
@@ -56,6 +52,10 @@ def main():
 
     logging.info("Without daemon...")
     without_daemon()
+
+    print('\nA daemon implies running in background.\n'
+          'Daemon case: runs in program in background, even after main thread has exited.\n'
+          'Non-daemon case: does not run in background, must finish with main thread.\n')
 
 
 if __name__ == "__main__":

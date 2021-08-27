@@ -1,4 +1,4 @@
-# Python Threading Notes
+# Python Concurrency Notes
 
 ## Python and threads
 
@@ -150,7 +150,7 @@ def main():
 
 ```
 
-### Additional Notes
+### Additional Notes on threading
 
 
 ```py
@@ -162,3 +162,9 @@ def main():
 
 ```
 `submit` allows you to pass arguemnts to `some_func`.
+
+
+## Python and multiprocessing
+
+## Python and asynchronous event loop
+

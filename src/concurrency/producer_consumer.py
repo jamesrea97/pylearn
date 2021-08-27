@@ -5,7 +5,7 @@ import logging
 import random
 from threading import Event
 
-from logging_helper import setup_logging
+from helpers.logging_helper import setup_logging
 
 
 def producer(queue: Queue, event: Event):
