@@ -2,7 +2,8 @@
 import threading
 import time
 import logging
-import cProfile
+
+from logging_helper import setup_logging
 
 
 def long_task() -> None:
@@ -37,13 +38,6 @@ def with_thread() -> None:
     logging.info("Waiting for thread to finish.")
 
     logging.info("Stopping program.")
-
-
-def setup_logging() -> None:
-    """Sets up logging."""
-    logging.basicConfig(format="%(asctime)s: %(message)s",
-                        level=logging.INFO,
-                        datefmt="%H:%M:%S")
 
 
 def main() -> None:

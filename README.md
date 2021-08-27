@@ -7,7 +7,7 @@ Please refer to `./NOTES.md` for detailed notes.
 With each set of notes, there are accompanying sample code found in `./src`.
 You can run these as follows:
 ```py
-python ./src/{{name_topic}}.py
+python ./src/{{topic_name}}/{{sample_code}}.py
 ```
 
 ## Deployment

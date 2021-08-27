@@ -2,8 +2,9 @@
 from threading import Lock
 from concurrent.futures import ThreadPoolExecutor
 import time
-
 import logging
+
+from logging_helper import setup_logging
 
 
 class DB:
@@ -40,13 +41,6 @@ class DB:
             self.__update(value)
 
             logging.info(f"Ending updating:: current state = {self.__state}.")
-
-
-def setup_logging() -> None:
-    """Sets up logging."""
-    logging.basicConfig(format="%(asctime)s: %(message)s",
-                        level=logging.INFO,
-                        datefmt="%H:%M:%S")
 
 
 def main() -> None:

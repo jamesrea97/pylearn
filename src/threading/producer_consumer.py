@@ -5,6 +5,8 @@ import logging
 import random
 from threading import Event
 
+from logging_helper import setup_logging
+
 
 def producer(queue: Queue, event: Event):
     """Example of a producer - receives requests and publishes them to the queue."""
@@ -25,13 +27,6 @@ def consumer(queue: Queue, event: Event) -> None:
         logging.info(f"Consumed message:{message} - Queue size: {queue.qsize()}.")
 
     logging.info("No more messages to be consume.")
-
-
-def setup_logging() -> None:
-    """Sets up logging."""
-    logging.basicConfig(format="%(asctime)s: %(message)s",
-                        level=logging.INFO,
-                        datefmt="%H:%M:%S")
 
 
 def main():

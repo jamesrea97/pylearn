@@ -3,19 +3,14 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 import logging
 
+from logging_helper import setup_logging
+
 
 def long_task(i: int) -> None:
     """Long task."""
     logging.info(f"Starting long task - thread: {i}.")
     time.sleep(2)
     logging.info(f"Ending long task - thread: {i}")
-
-
-def setup_logging() -> None:
-    """Sets up logging."""
-    logging.basicConfig(format="%(asctime)s: %(message)s",
-                        level=logging.INFO,
-                        datefmt="%H:%M:%S")
 
 
 def main() -> None:
